@@ -112,7 +112,6 @@
       display: block;
     }
 
-    /* GALLERY SWIPE ANIMATION */
     .main-img {
       flex: 1;
       width: 100%;
@@ -155,9 +154,17 @@
       margin-bottom: 25px;
     }
 
+    /* FIXED BUTTONS (updated only this part) */
+    .buttons-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
     .buy-btn {
-      display: inline-block;
-      padding: 10px 20px;
+      flex: 1;
+      text-align: center;
+      padding: 12px 0;
       background: #0ff;
       color: #000;
       border-radius: 8px;
@@ -171,7 +178,6 @@
       background: #00e6e6;
     }
 
-    /* MOBILE VERSION */
     @media (max-width: 480px) {
 
       #viewMoreBtn,
@@ -305,8 +311,11 @@
         Modern design • High-quality material • Fast delivery.
       </p>
 
-      <a class="buy-btn" href="#">Add to Cart</a>
-      <a class="buy-btn" href="#" style="margin-left: 10px;">Buy Now</a>
+      <!-- UPDATED BUTTON HTML -->
+      <div class="buttons-row">
+        <a class="buy-btn" id="cart" href="#">Add to Cart</a>
+        <a class="buy-btn" id="buy" href="#">Buy Now</a>
+      </div>
 
     </div>
 
@@ -350,7 +359,6 @@
       document.getElementById("viewMoreBtn").style.display = "block";
     }
 
-    /* MOBILE SWIPE */
     let startX = 0;
 
     bigImg.addEventListener("touchstart", (e) => {
