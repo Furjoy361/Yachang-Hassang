@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yachang Hassang Enterprise</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+      background: #0e0e0e;
+      color: #fff;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      width: 100%;
+      background: #111;
+      padding: 10px 25px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #222;
+      height: 100px;
+    }
+
+    .logo img {
+      height: 150px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-buttons a {
+      text-decoration: none;
+      color: #0ff;
+      padding: 8px 14px;
+      border: 1px solid #0ff;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .nav-buttons a:hover {
+      background: #0ff;
+      color: #000;
+    }
+
+    /* BANNER */
+    .banner {
+      width: 100%;
+      height: 850px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .banner img {
+      width: 100%;
+      height: 850px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 50%;
+      background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0));
+      display: flex;
+      align-items: center;
+      padding-left: 50px;
+      z-index: 5;
+    }
+
+    .banner-text {
+      max-width: 380px;
+    }
+
+    .banner-text h1 {
+      font-size: 42px;
+      font-weight: bold;
+      color: #0ff;
+      margin-bottom: 10px;
+    }
+
+    .banner-text p {
+      font-size: 18px;
+      color: #ddd;
+      line-height: 1.5;
+    }
+
+    .shop-now-btn {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 14px 28px;
+      background: transparent;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.25s;
+      border: 2px solid #fff;
+      z-index: 10;
+    }
+
+    .shop-now-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 45px 20px;
+      text-align: center;
+      background: linear-gradient(to bottom, #111, #0e0e0e);
+      border-bottom: 1px solid #222;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: #0ff;
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: #ccc;
+    }
+
+    /* PRODUCT GRID */
+    .product-section {
+      padding: 25px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .product-card {
+      background: #181818;
+      padding: 25px;
+      border-radius: 14px;
+      text-align: center;
+      border: 1px solid #222;
+      transition: 0.25s;
+      box-shadow: 0 0 0px rgba(0,255,255,0);
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: #0ff;
+      box-shadow: 0 0 12px rgba(0,255,255,0.4);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #333;
+    }
+
+    .product-card h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .product-card p {
+      color: #0ff;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .buy-btn {
+      display: inline-block;
+      padding: 8px 14px;
+      background: #0ff;
+      color: #000;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .buy-btn:hover {
+      background: #00e6e6;
+    }
+
+    /* MOBILE FIXES */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 10px 15px;
+        height: 80px;
+      }
+
+      .logo img {
+        height: 100px;
+      }
+
+      .banner {
+        height: 450px;
+      }
+
+      .banner img {
+        height: 450px;
+      }
+
+      .banner-overlay {
+        width: 70%;
+        padding-left: 20px;
+        padding-top: 40px;
+      }
+
+      .banner-text h1 {
+        font-size: 26px;
+      }
+
+      .banner-text p {
+        font-size: 14px;
+      }
+
+      .shop-now-btn {
+        top: 75%;
+        font-size: 16px;
+        padding: 10px 18px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-card img {
+        height: 180px;
+      }
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="logo">
+      <img src="Images/logo.png" alt="Logo">
+    </div>
+
+    <div class="nav-buttons">
+      <a href="orders.html">Orders</a>
+      <a href="cart.html">Cart</a>
+    </div>
+  </div>
+
+  <!-- BANNER -->
+  <div class="banner">
+    <img src="Images/banner1.png" alt="Banner">
+
+    <a href="#products" class="shop-now-btn">SHOP NOW</a>
+
+    <div class="banner-overlay">
+      <div class="banner-text">
+        <h1>Shop Smart. Shop Fast.</h1>
+        <p>Discover premium products with a modern shopping experience designed just for you.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Your Next-Gen Shopping Hub</h1>
+    <p>Dark • Modern • Clean • Fast</p>
+  </section>
+
+  <!-- PRODUCT GRID -->
+  <section class="product-section" id="products">
+    <div class="product-grid">
+
+      <!-- PRODUCT 1 = a1 -->
+ <!-- PRODUCT 1 = a1 -->
+<div class="product-card"><img src="images/a1.jpg"><h3>Product 1</h3><p>₹499</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 2 = b1 -->
+<div class="product-card"><img src="images/b1.jpg"><h3>Product 2</h3><p>₹599</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 3 = c1 -->
+<div class="product-card"><img src="images/c1.jpg"><h3>Product 3</h3><p>₹349</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 4 = d1 -->
+<div class="product-card"><img src="images/d1.jpg"><h3>Product 4</h3><p>₹799</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 5 = e1 -->
+<div class="product-card"><img src="images/e1.jpg"><h3>Product 5</h3><p>₹299</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 6 = f1 -->
+<div class="product-card"><img src="images/f1.jpg"><h3>Product 6</h3><p>₹999</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 7 = g1 -->
+<div class="product-card"><img src="images/g1.jpg"><h3>Product 7</h3><p>₹449</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 8 = h1 -->
+<div class="product-card"><img src="images/h1.jpg"><h3>Product 8</h3><p>₹549</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 9 = i1 -->
+<div class="product-card"><img src="images/i1.jpg"><h3>Product 9</h3><p>₹699</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 10 = j1 -->
+<div class="product-card"><img src="images/j1.jpg"><h3>Product 10</h3><p>₹399</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 11 = k1 -->
+<div class="product-card"><img src="images/k1.jpg"><h3>Product 11</h3><p>₹899</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 12 = l1 -->
+<div class="product-card"><img src="images/l1.jpg"><h3>Product 12</h3><p>₹749</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 13 = m1 -->
+<div class="product-card"><img src="images/m1.jpg"><h3>Product 13</h3><p>₹599</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 14 = n1 -->
+<div class="product-card"><img src="images/n1.jpg"><h3>Product 14</h3><p>₹459</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 15 = o1 -->
+<div class="product-card"><img src="images/o1.jpg"><h3>Product 15</h3><p>₹999</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 16 = p1 -->
+<div class="product-card"><img src="images/p1.jpg"><h3>Product 16</h3><p>₹299</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 17 = q1 -->
+<div class="product-card"><img src="images/q1.jpg"><h3>Product 17</h3><p>₹899</p><a class="buy-btn" href="#">View</a></div>
+
+<!-- PRODUCT 18 = r1 -->
+<div class="product-card"><img src="images/r1.jpg"><h3>Product 18</h3><p>₹499</p><a class="buy-btn" href="#">View</a></div>
+
+
+    </div>
+  </section>
+
+</body>
+</html>
