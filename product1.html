@@ -165,94 +165,90 @@
     }
 
     /* ----------------------------------------------------- */
-    /*                 MOBILE VERSION (480px)                */
+    /*                 MOBILE VERSION ONLY                  */
     /* ----------------------------------------------------- */
     @media (max-width: 480px) {
 
-  .navbar {
-    height: 65px;
-    padding: 8px 12px;
-  }
+      /* hide view more buttons completely on mobile */
+      #viewMoreBtn,
+      #viewLessBtn {
+        display: none !important;
+      }
 
-  .logo img {
-    height: 55px;
-  }
+      /* hide extra thumbnails on mobile */
+      #moreThumbs {
+        display: none !important;
+      }
 
-  .nav-buttons a {
-    padding: 5px 8px;
-    font-size: 11px;
-  }
+      .navbar {
+        height: 65px;
+        padding: 8px 12px;
+      }
 
-  .product-container {
-    flex-direction: column;
-    padding: 15px;
-    gap: 20px;
-  }
+      .logo img {
+        height: 55px;
+      }
 
-  /* Fix left side layout */
-  .left-images-wrapper {
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-  }
+      .nav-buttons a {
+        padding: 5px 8px;
+        font-size: 11px;
+      }
 
-  /* Thumbnails become horizontal scroll */
-  .thumbs {
-    flex-direction: row;
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    gap: 10px;
-  }
+      .product-container {
+        flex-direction: column;
+        padding: 15px;
+        gap: 20px;
+      }
 
-  .thumbs::-webkit-scrollbar {
-    height: 6px;
-  }
+      .left-images-wrapper {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+      }
 
-  .thumbs::-webkit-scrollbar-thumb {
-    background: #0ff;
-    border-radius: 10px;
-  }
+      .thumbs {
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        gap: 10px;
+      }
 
-  .thumbs img {
-    width: 70px;
-    height: 70px;
-    flex-shrink: 0;
-  }
+      .thumbs img {
+        width: 70px;
+        height: 70px;
+        flex-shrink: 0;
+      }
 
-  /* Big image centered */
-  .main-img {
-    height: 280px;
-    width: 100%;
-    margin-top: 10px;
-    object-fit: contain;
-  }
+      .main-img {
+        height: 280px;
+        width: 100%;
+        margin-top: 10px;
+        object-fit: contain;
+      }
 
-  /* Product info clean + centered */
-  .right-info {
-    text-align: center;
-  }
+      .right-info {
+        text-align: center;
+      }
 
-  .right-info h1 {
-    font-size: 22px;
-  }
+      .right-info h1 {
+        font-size: 22px;
+      }
 
-  .price {
-    font-size: 20px;
-  }
+      .price {
+        font-size: 20px;
+      }
 
-  .desc {
-    font-size: 14px;
-    padding: 0 10px;
-  }
+      .desc {
+        font-size: 14px;
+        padding: 0 10px;
+      }
 
-  /* Buttons full width */
-  .buy-btn {
-    width: 100%;
-    margin: 8px 0;
-  }
-}
-
+      .buy-btn {
+        width: 100%;
+        margin: 8px 0;
+      }
+    }
   </style>
 
 </head>
@@ -315,8 +311,20 @@
   </div>
 
   <script>
+
+    let images = [
+      "images/a1.jpg",
+      "images/a2.jpg",
+      "images/a3.jpg",
+      "images/a4.jpg",
+      "images/a5.jpg"
+    ];
+
+    let currentIndex = 0;
+
     function changeImg(img) {
       document.getElementById("bigImg").src = img;
+      currentIndex = images.indexOf(img);
     }
 
     function showMore() {
@@ -330,6 +338,32 @@
       document.getElementById("viewLessBtn").style.display = "none";
       document.getElementById("viewMoreBtn").style.display = "block";
     }
+
+    /* MOBILE SWIPE FUNCTION */
+    const bigImg = document.getElementById("bigImg");
+
+    let startX = 0;
+
+    bigImg.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    bigImg.addEventListener("touchend", (e) => {
+      let endX = e.changedTouches[0].clientX;
+
+      if (startX - endX > 50) {
+        // swipe left → next image
+        currentIndex = (currentIndex + 1) % images.length;
+        bigImg.src = images[currentIndex];
+      }
+
+      if (endX - startX > 50) {
+        // swipe right → previous image
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        bigImg.src = images[currentIndex];
+      }
+    });
+
   </script>
 
 </body>
