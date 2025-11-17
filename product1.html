@@ -112,6 +112,7 @@
       display: block;
     }
 
+    /* GALLERY SWIPE ANIMATION */
     .main-img {
       flex: 1;
       width: 100%;
@@ -121,6 +122,12 @@
       background: #000;
       border: 1px solid #333;
       box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .fade-slide {
+      opacity: 0;
+      transform: translateX(-20px);
     }
 
     .right-info {
@@ -164,18 +171,14 @@
       background: #00e6e6;
     }
 
-    /* ----------------------------------------------------- */
-    /*                 MOBILE VERSION ONLY                  */
-    /* ----------------------------------------------------- */
+    /* MOBILE VERSION */
     @media (max-width: 480px) {
 
-      /* hide view more buttons completely on mobile */
       #viewMoreBtn,
       #viewLessBtn {
         display: none !important;
       }
 
-      /* hide extra thumbnails on mobile */
       #moreThumbs {
         display: none !important;
       }
@@ -223,8 +226,6 @@
       .main-img {
         height: 280px;
         width: 100%;
-        margin-top: 10px;
-        object-fit: contain;
       }
 
       .right-info {
@@ -249,6 +250,7 @@
         margin: 8px 0;
       }
     }
+
   </style>
 
 </head>
@@ -321,10 +323,19 @@
     ];
 
     let currentIndex = 0;
+    const bigImg = document.getElementById("bigImg");
+
+    function animateChange(newSrc) {
+      bigImg.classList.add("fade-slide");
+      setTimeout(() => {
+        bigImg.src = newSrc;
+        bigImg.classList.remove("fade-slide");
+      }, 250);
+    }
 
     function changeImg(img) {
-      document.getElementById("bigImg").src = img;
       currentIndex = images.indexOf(img);
+      animateChange(img);
     }
 
     function showMore() {
@@ -339,9 +350,7 @@
       document.getElementById("viewMoreBtn").style.display = "block";
     }
 
-    /* MOBILE SWIPE FUNCTION */
-    const bigImg = document.getElementById("bigImg");
-
+    /* MOBILE SWIPE */
     let startX = 0;
 
     bigImg.addEventListener("touchstart", (e) => {
@@ -352,15 +361,13 @@
       let endX = e.changedTouches[0].clientX;
 
       if (startX - endX > 50) {
-        // swipe left → next image
         currentIndex = (currentIndex + 1) % images.length;
-        bigImg.src = images[currentIndex];
+        animateChange(images[currentIndex]);
       }
 
       if (endX - startX > 50) {
-        // swipe right → previous image
         currentIndex = (currentIndex - 1 + images.length) % images.length;
-        bigImg.src = images[currentIndex];
+        animateChange(images[currentIndex]);
       }
     });
 
