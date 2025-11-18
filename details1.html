@@ -166,53 +166,58 @@
   </div>
 
   <script>
-    // Display product preview from query params or localStorage
-    const url = new URLSearchParams(window.location.search);
-    const nameParam = url.get("name");
-    const imgParam = url.get("img");
-    const priceParam = url.get("price");
+    document.addEventListener("DOMContentLoaded", () => {
+      // Display product preview from query params or localStorage
+      const url = new URLSearchParams(window.location.search);
+      const nameParam = url.get("name");
+      const imgParam = url.get("img");
+      const priceParam = url.get("price");
 
-    const productName = nameParam || localStorage.getItem("productName") || "Unknown";
-    const productImage = imgParam || localStorage.getItem("productImage") || "";
-    const productPrice = priceParam || localStorage.getItem("productPrice") || "";
+      const productName = nameParam || localStorage.getItem("productName") || "Unknown";
+      const productImage = imgParam || localStorage.getItem("productImage") || "";
+      const productPrice = priceParam || localStorage.getItem("productPrice") || "";
 
-    if(productName && productImage) {
-      document.getElementById("productBox").style.display = "flex";
-      document.getElementById("pImg").src = productImage;
-      document.getElementById("pName").textContent = productName;
-      document.getElementById("pPrice").textContent = "₹" + productPrice;
-    }
-
-    // Submit details to Google Sheets
-    const submitBtn = document.querySelector(".submit-btn");
-    submitBtn.addEventListener("click", () => {
-      const name = document.getElementById("name").value;
-      const phone = document.getElementById("phone").value;
-      const address = document.getElementById("address").value;
-      const payment = document.getElementById("payment").value;
-      const notes = document.getElementById("notes").value;
-
-      if(!name || !phone || !address) {
-        alert("Please fill all required fields!");
-        return;
+      if(productName && productImage) {
+        document.getElementById("productBox").style.display = "flex";
+        document.getElementById("pImg").src = productImage;
+        document.getElementById("pName").textContent = productName;
+        document.getElementById("pPrice").textContent = "₹" + productPrice;
       }
 
-      const data = { name, phone, address, payment, notes, productName, productImage };
+      // Submit details to Google Sheets
+      const submitBtn = document.querySelector(".submit-btn");
+      submitBtn.addEventListener("click", () => {
+        const name = document.getElementById("name").value;
+        const phone = document.getElementById("phone").value;
+        const address = document.getElementById("address").value;
+        const payment = document.getElementById("payment").value;
+        const notes = document.getElementById("notes").value;
 
-      fetch("https://script.google.com/macros/s/AKfycbzfDHLodz-gfcCAHPjdCbdAwm8TIWUjBqlhlsXKHed9HsaL7Crz8UQ3ldr-Qa6FgcTf7A/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
-      })
-      .then(res => res.text())
-      .then(response => {
-        alert("Order Submitted Successfully!");
-        localStorage.removeItem("productName");
-        localStorage.removeItem("productImage");
-        localStorage.removeItem("productPrice");
-        window.location.href = "orders.html";
-      })
-      .catch(err => console.error(err));
+        if(!name || !phone || !address) {
+          alert("Please fill all required fields!");
+          return;
+        }
+
+        const data = { name, phone, address, payment, notes, productName, productImage };
+
+        fetch("https://script.google.com/macros/s/AKfycbzfDHLodz-gfcCAHPjdCbdAwm8TIWUjBqlhlsXKHed9HsaL7Crz8UQ3ldr-Qa6FgcTf7A/exec", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" }
+        })
+        .then(res => res.text())
+        .then(response => {
+          alert("Order Submitted Successfully!");
+          localStorage.removeItem("productName");
+          localStorage.removeItem("productImage");
+          localStorage.removeItem("productPrice");
+          window.location.href = "orders.html";
+        })
+        .catch(err => {
+          console.error(err);
+          alert("Error submitting order. Check console.");
+        });
+      });
     });
   </script>
 
