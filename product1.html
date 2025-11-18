@@ -59,6 +59,17 @@
       color: #000;
     }
 
+    @keyframes cartBounce {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.25); }
+      70% { transform: scale(0.9); }
+      100% { transform: scale(1); }
+    }
+
+    .cartBounce {
+      animation: cartBounce 0.45s ease forwards;
+    }
+
     .product-container {
       display: flex;
       gap: 35px;
@@ -154,17 +165,9 @@
       margin-bottom: 25px;
     }
 
-    /* FIXED BUTTONS (updated only this part) */
-    .buttons-row {
-      display: flex;
-      gap: 12px;
-      margin-top: 15px;
-    }
-
     .buy-btn {
-      flex: 1;
-      text-align: center;
-      padding: 12px 0;
+      display: inline-block;
+      padding: 10px 20px;
       background: #0ff;
       color: #000;
       border-radius: 8px;
@@ -178,8 +181,31 @@
       background: #00e6e6;
     }
 
-    @media (max-width: 480px) {
+    .product-details {
+      display: none;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 15px;
+      color: #0ff;
+      font-size: 14px;
+      line-height: 1.5;
+    }
 
+    .details-btn {
+      margin-top: 10px;
+      padding: 8px 0;
+      background: transparent;
+      color: #0ff;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
       #viewMoreBtn,
       #viewLessBtn {
         display: none !important;
@@ -256,21 +282,19 @@
         margin: 8px 0;
       }
     }
-
   </style>
-
 </head>
 <body>
 
   <div class="navbar">
     <div class="logo">
-      <img src="images/logo.png" alt="Logo">
+      <img src="images/logo.jpg" alt="Logo">
     </div>
 
     <div class="nav-buttons">
       <a href="index.html">Home</a>
       <a href="orders.html">Orders</a>
-      <a href="cart.html">Cart</a>
+      <a id="cartBtn" href="cart.html">Cart</a>
     </div>
   </div>
 
@@ -279,7 +303,6 @@
     <div class="left-images-wrapper">
 
       <div class="thumbs">
-
         <img src="images/a1.jpg" onclick="changeImg('images/a1.jpg')">
         <img src="images/a2.jpg" onclick="changeImg('images/a2.jpg')">
         <img src="images/a3.jpg" onclick="changeImg('images/a3.jpg')">
@@ -295,7 +318,6 @@
 
         <button class="view-more-btn" id="viewMoreBtn" onclick="showMore()">View More</button>
         <button class="view-more-btn" id="viewLessBtn" style="display:none;" onclick="hideMore()">View Less</button>
-
       </div>
 
       <img id="bigImg" src="images/a1.jpg" class="main-img">
@@ -303,18 +325,34 @@
     </div>
 
     <div class="right-info">
-      <h1>Product 1</h1>
-      <p class="price">₹499</p>
+      <h1>Smart Electric Scalp & Body Massager – 96 Points, Detachable, Waterproof, Rechargeable (White)</h1>
+      <p class="price">₹1,199</p>
 
       <p class="desc">
-        This is a premium quality product from Yachang Hassang Enterprise.  
-        Modern design • High-quality material • Fast delivery.
+        Rechargeable, waterproof scalp and body massager with 96 silicone kneading points and detachable heads for relaxing massage at home or on the go.
       </p>
 
-      <!-- UPDATED BUTTON HTML -->
-      <div class="buttons-row">
-        <a class="buy-btn" id="cart" href="#">Add to Cart</a>
-        <a class="buy-btn" id="buy" href="#">Buy Now</a>
+      <a class="buy-btn" href="#" onclick="addToCart()">Add to Cart</a>
+      <a class="buy-btn" 
+   href="details1.html?name=Smart Electric Scalp & Body Massager – 96 Points, Detachable, Waterproof, Rechargeable (White)&img=images/a1.jpg&price=1199" 
+   style="margin-left: 10px;">
+   Buy Now
+</a>
+
+
+      <button class="details-btn" id="detailsBtn" onclick="toggleDetails()">Show Details</button>
+      <div class="product-details" id="productDetails">
+        <ul>
+          <li>Use for: Whole Body</li>
+          <li>Power Source: Battery Powered</li>
+          <li>Material: Silicone</li>
+          <li>Item Weight: 200 Grams</li>
+          <li>Colour: White</li>
+          <li>Special Feature: 360° Rotating Heads, One-Button Control, Portable, Rechargeable, Waterproof, Cordless, Lightweight</li>
+          <li>Massager form: Electric Scalp Massager</li>
+          <li>Specific Uses: Circulation, Head, Neck, Hair Growth, Stress Relief, Scalp Massage, Full Body Massage, Pain Relief, Blood Circulation</li>
+          <li>Product Dimensions: 16.5L x 5W x 20.8H cm</li>
+        </ul>
       </div>
 
     </div>
@@ -322,15 +360,7 @@
   </div>
 
   <script>
-
-    let images = [
-      "images/a1.jpg",
-      "images/a2.jpg",
-      "images/a3.jpg",
-      "images/a4.jpg",
-      "images/a5.jpg"
-    ];
-
+    let images = ["images/a1.jpg","images/a2.jpg","images/a3.jpg","images/a4.jpg","images/a5.jpg"];
     let currentIndex = 0;
     const bigImg = document.getElementById("bigImg");
 
@@ -359,26 +389,54 @@
       document.getElementById("viewMoreBtn").style.display = "block";
     }
 
+    /* MOBILE SWIPE */
     let startX = 0;
-
-    bigImg.addEventListener("touchstart", (e) => {
-      startX = e.touches[0].clientX;
-    });
-
+    bigImg.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; });
     bigImg.addEventListener("touchend", (e) => {
       let endX = e.changedTouches[0].clientX;
-
-      if (startX - endX > 50) {
-        currentIndex = (currentIndex + 1) % images.length;
-        animateChange(images[currentIndex]);
-      }
-
-      if (endX - startX > 50) {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        animateChange(images[currentIndex]);
-      }
+      if (startX - endX > 50) { currentIndex = (currentIndex + 1) % images.length; animateChange(images[currentIndex]); }
+      if (endX - startX > 50) { currentIndex = (currentIndex - 1 + images.length) % images.length; animateChange(images[currentIndex]); }
     });
 
+    function addToCart() {
+      const product = {
+        name: "Smart Electric Scalp & Body Massager – 96 Points, Detachable, Waterproof, Rechargeable (White)",
+        price: 1199,
+        image: "images/a1.jpg",
+        useFor: "Whole Body",
+        powerSource: "Battery Powered",
+        material: "Silicone",
+        itemWeight: "200 Grams",
+        brand: "MILDCARES",
+        colour: "White",
+        specialFeature: "360° Rotating Heads, One-Button Control, Portable, Rechargeable, Waterproof, Cordless, Lightweight",
+        massagerForm: "Electric Scalp Massager",
+        specificUses: "Circulation, Head, Neck, Hair Growth, Stress Relief, Scalp Massage, Full Body Massage, Pain Relief, Blood Circulation",
+        dimensions: "16.5L x 5W x 20.8H cm",
+        qty: 1
+      };
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      let cartBtn = document.getElementById("cartBtn");
+      cartBtn.classList.remove("cartBounce");
+      void cartBtn.offsetWidth;
+      cartBtn.classList.add("cartBounce");
+    }
+
+    function toggleDetails() {
+      const details = document.getElementById("productDetails");
+      const btn = document.getElementById("detailsBtn");
+      if(details.style.display === "block") {
+        details.style.display = "none";
+        btn.textContent = "Show Details";
+      } else {
+        details.style.display = "block";
+        btn.textContent = "Show Less";
+      }
+    }
   </script>
 
 </body>
