@@ -171,7 +171,7 @@
   </div>
 
   <script>
-  // Display product preview
+  // Product preview
   const url = new URLSearchParams(window.location.search);
   const nameParam = url.get("name");
   const imgParam = url.get("img");
@@ -203,24 +203,28 @@
       productImage: productImage
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbx3t_1iQMZgCYO539Wxa05cK9CBjOI5-2BMkCtWeLCf_VovkVfAHkhNKc_hVTAL3uiJcg/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbzbprpkSO3rLRwTnbVp3KfUQCJpra2FFo0zJaaVCm-B9B8oKSgHioFsGBsB6x1nc9D-XA/exec", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     })
-    .then(res => res.text())
+    .then(res => res.json())
     .then(response => {
-      if (data.payment === "Cash on Delivery") {
-        alert('✅ Order placed successfully! (Cash on Delivery)');
-        window.location.href = "thankyou.html";
+      if(response.status === "success") {
+        if(data.payment === "Cash on Delivery") {
+          alert('✅ Order placed successfully! (Cash on Delivery)');
+          window.location.href = "thankyou.html";
+        } else {
+          alert('✅ Order submitted! Redirecting to payment...');
+          window.location.href = "https://rzp.io/rzp/6S1rNG5";
+        }
+        this.reset();
+        localStorage.removeItem("productName");
+        localStorage.removeItem("productImage");
+        localStorage.removeItem("productPrice");
       } else {
-        alert('✅ Order submitted! Redirecting to payment...');
-        window.location.href = "https://rzp.io/rzp/6S1rNG5";
+        alert('❌ Something went wrong: ' + response.message);
       }
-      this.reset();
-      localStorage.removeItem("productName");
-      localStorage.removeItem("productImage");
-      localStorage.removeItem("productPrice");
     })
     .catch(err => {
       console.error(err);
