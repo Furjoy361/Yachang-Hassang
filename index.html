@@ -13,12 +13,16 @@
       font-family: "Poppins", Arial, sans-serif;
     }
 
+    a, a:visited {
+      text-decoration: none !important;
+      color: inherit !important;
+    }
+
     body {
       background: #0e0e0e;
       color: #fff;
     }
 
-    /* NAVBAR */
     .navbar {
       width: 100%;
       background: #111;
@@ -60,7 +64,6 @@
       color: #000;
     }
 
-    /* BANNER */
     .banner {
       width: 100%;
       height: 850px;
@@ -126,7 +129,6 @@
       background: rgba(255, 255, 255, 0.15);
     }
 
-    /* HERO */
     .hero {
       padding: 45px 20px;
       text-align: center;
@@ -145,7 +147,6 @@
       color: #ccc;
     }
 
-    /* PRODUCT GRID */
     .product-section {
       padding: 25px;
     }
@@ -164,6 +165,7 @@
       border: 1px solid #222;
       transition: 0.25s;
       box-shadow: 0 0 0px rgba(0,255,255,0);
+      cursor: pointer;
     }
 
     .product-card:hover {
@@ -172,14 +174,17 @@
       box-shadow: 0 0 12px rgba(0,255,255,0.4);
     }
 
-    .product-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      border: 1px solid #333;
-    }
+    /* UPDATED — full image, no stretch, no borders */
+   .product-card img {
+  width: 100%;
+  height: auto;     /* auto height so image is NEVER stretched */
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #333;
+  background: none;
+}
+
 
     .product-card h3 {
       font-size: 17px;
@@ -208,7 +213,6 @@
       background: #00e6e6;
     }
 
-    /* MOBILE FIXES */
     @media (max-width: 768px) {
       .navbar {
         padding: 10px 15px;
@@ -253,21 +257,24 @@
     }
 
     @media (max-width: 480px) {
-      .product-grid {
-        grid-template-columns: 1fr;
-      }
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
 
-      .product-card img {
-        height: 180px;
-      }
-    }
+  .product-card img {
+    width: 100%;
+    height: auto;           /* fixes stretching */
+    max-height: 420px;      /* shows the full picture */
+    object-fit: contain;    /* ensures full image without cut */
+    background: #000;       /* removes any blank/white space */
+    border-radius: 12px;
+  }
+}
 
   </style>
-
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <div class="navbar">
     <div class="logo">
       <img src="Images/logo.png" alt="Logo">
@@ -279,7 +286,6 @@
     </div>
   </div>
 
-  <!-- BANNER -->
   <div class="banner">
     <img src="Images/banner1.png" alt="Banner">
 
@@ -293,71 +299,71 @@
     </div>
   </div>
 
-  <!-- HERO -->
   <section class="hero">
     <h1>Your Next-Gen Shopping Hub</h1>
     <p>Dark • Modern • Clean • Fast</p>
   </section>
 
-  <!-- PRODUCT GRID -->
   <section class="product-section" id="products">
     <div class="product-grid">
 
-      <!-- PRODUCT 1 = a1 -->
- <!-- PRODUCT 1 = a1 -->
-<div class="product-card"><img src="images/a1.jpg"><h3>Product 1</h3><p>₹499</p><a class="buy-btn" href="product1.html">View</a></div>
+      <a href="product1.html" class="product-card">
+        <img src="images/a1.jpg"><h3>Smart Electric Scalp & Body Massager – 96 Points, Detachable, Waterproof, Rechargeable (White)</h3><p>₹1199</p>
+      </a>
 
-<!-- PRODUCT 2 = b1 -->
-<div class="product-card"><img src="images/b1.jpg"><h3>Product 2</h3><p>₹599</p><a class="buy-btn" href="#">View</a></div>
+      <a href="product2.html" class="product-card">
+        <img src="images/b1.jpg"><h3>Baby Safety Password Keypad Door Lock (White, 1 Pc)</h3><p>₹499</p>
+      </a>
 
-<!-- PRODUCT 3 = c1 -->
-<div class="product-card"><img src="images/c1.jpg"><h3>Product 3</h3><p>₹349</p><a class="buy-btn" href="#">View</a></div>
+      <a href="product3.html" class="product-card">
+        <img src="images/c1.jpeg"><h3>Shiatsu Deep Rolling Massager – 3D Kneading, Heat, Adjustable Intensity for Neck, Back & Shoulders</h3><p>₹1599</p>
+      </a>
 
-<!-- PRODUCT 4 = d1 -->
-<div class="product-card"><img src="images/d1.jpg"><h3>Product 4</h3><p>₹799</p><a class="buy-btn" href="#">View</a></div>
+      <a href="product4.html" class="product-card">
+        <img src="images/d1.jpg"><h3>Portable Cordless Heating Pad for Menstrual Cramps Relief, for Stomach, 3-Speed Temperature Adjustment and 4-Speed Massage Modes, Back and Belly Heating Pad for Women Pink Color</h3><p>₹615</p>
+      </a>
 
-<!-- PRODUCT 5 = e1 -->
-<div class="product-card"><img src="images/e1.jpg"><h3>Product 5</h3><p>₹299</p><a class="buy-btn" href="#">View</a></div>
+      <a href="product5.html" class="product-card">
+        <img src="images/e1.jpg"><h3>Baby Nail Trimmer Electric Nail Clipper for Infants & Kids | Safe & Silent Nail Cutter with Nail Debris Collector | Rechargeable Automatic Baby Nail Trimmer for Newborns & Toddlers | Portable Kids Grooming Tool</h3><p>₹799</p>
+      </a>
 
-<!-- PRODUCT 6 = f1 -->
-<div class="product-card"><img src="images/f1.jpg"><h3>Product 6</h3><p>₹999</p><a class="buy-btn" href="#">View</a></div>
+      <a href="product6.html" class="product-card">
+        <img src="images/f1.jpg"><h3>
+Rechargeable Waterproof 3D Scalp Massager-Handheld Portable Head Massager Machine For Stress Relief And Deep Muscle Relaxation (White)</h3><p>₹2299</p>
+      </a>
 
-<!-- PRODUCT 7 = g1 -->
-<div class="product-card"><img src="images/g1.jpg"><h3>Product 7</h3><p>₹449</p><a class="buy-btn" href="#">View</a></div>
+      <a href="product7.html" class="product-card">
+        <img src="images/g1.jpg"><h3>Folding Silicone Water Bottle Sports Water Bottle Outdoor Travel Portable Water Cup Running Riding Camping Hiking Kettle - 600 Ml</h3><p>₹449</p>
+      </a>
 
-<!-- PRODUCT 8 = h1 -->
-<div class="product-card"><img src="images/h1.jpg"><h3>Product 8</h3><p>₹549</p><a class="buy-btn" href="#">View</a></div>
+      <a href="product8.html" class="product-card">
+        <img src="images/h1.jpg"><h3>
+HD Visor for Car, for Day and Night, Polarized Sun Visor, Anti-Glare, UV Blocking Sun Protection Vehicle Windshield Sunshade for Clearer Vision and Safe Driving (car Sun Visor)</h3><p>₹499</p>
+      </a>
 
-<!-- PRODUCT 9 = i1 -->
-<div class="product-card"><img src="images/i1.jpg"><h3>Product 9</h3><p>₹699</p><a class="buy-btn" href="#">View</a></div>
+      <a href="product9.html" class="product-card">
+        <img src="images/i1.jpg"><h3>Stainless Steel Self Defence Stick Foldable Pointer Compact Magical Stick, Extendable Wand with Comfortable Grip & Hiking Stick, Extendable Wand with Non-Slip Grip (Pack of 1)</h3><p>₹489</p>
+      </a>
 
-<!-- PRODUCT 10 = j1 -->
-<div class="product-card"><img src="images/j1.jpg"><h3>Product 10</h3><p>₹399</p><a class="buy-btn" href="#">View</a></div>
+      <a href="product10.html" class="product-card">
+        <img src="images/j2.jpg"><h3>Jet Flame Butane Gas Lighter Refillable Windproof Torch Lighter with Safety Lock and Adjustable Flame | Cool Lighters for Candles, Campfires, BBQ, Baking, Fireplace, Camping | Metal Body</h3><p>₹799</p>
+      </a>
 
-<!-- PRODUCT 11 = k1 -->
-<div class="product-card"><img src="images/k1.jpg"><h3>Product 11</h3><p>₹899</p><a class="buy-btn" href="#">View</a></div>
+      <a href="product11.html" class="product-card">
+        <img src="images/k1.jpg"><h3>Pet Hair Brush for Dogs & Cats | Foldable Steamer Grooming Comb | Self Cleaning Lint Remover</h3><p>₹299</p>
+      </a>
 
-<!-- PRODUCT 12 = l1 -->
-<div class="product-card"><img src="images/l1.jpg"><h3>Product 12</h3><p>₹749</p><a class="buy-btn" href="#">View</a></div>
+      <a href="product15.html" class="product-card">
+        <img src="images/o1.jpg"><h3>LED Matrix Pixel Sign with Bluetooth App Control – 10x35 cm DIY Programmable Flexible LED Display</h3><p>₹2399</p>
+      </a>
 
-<!-- PRODUCT 13 = m1 -->
-<div class="product-card"><img src="images/m1.jpg"><h3>Product 13</h3><p>₹599</p><a class="buy-btn" href="#">View</a></div>
+      <a href="product16.html" class="product-card">
+        <img src="images/p1.jpg"><h3>Anti Choking Device, Choking Rescue Device for Kids and Adults, Portable Airway Suction Device, Airway Suction Device for Home & Travel First Aid Kit</h3><p>₹899</p>
+      </a>
 
-<!-- PRODUCT 14 = n1 -->
-<div class="product-card"><img src="images/n1.jpg"><h3>Product 14</h3><p>₹459</p><a class="buy-btn" href="#">View</a></div>
-
-<!-- PRODUCT 15 = o1 -->
-<div class="product-card"><img src="images/o1.jpg"><h3>Product 15</h3><p>₹999</p><a class="buy-btn" href="#">View</a></div>
-
-<!-- PRODUCT 16 = p1 -->
-<div class="product-card"><img src="images/p1.jpg"><h3>Product 16</h3><p>₹299</p><a class="buy-btn" href="#">View</a></div>
-
-<!-- PRODUCT 17 = q1 -->
-<div class="product-card"><img src="images/q1.jpg"><h3>Product 17</h3><p>₹899</p><a class="buy-btn" href="#">View</a></div>
-
-<!-- PRODUCT 18 = r1 -->
-<div class="product-card"><img src="images/r1.jpg"><h3>Product 18</h3><p>₹499</p><a class="buy-btn" href="#">View</a></div>
-
+      <a href="product17.html" class="product-card">
+        <img src="images/q1.jpg"><h3>Sunset Projection Lamp with RGB Mood Light, Humidifier Function, USB Powered, Pink and White</h3><p>₹899</p>
+      </a>
 
     </div>
   </section>

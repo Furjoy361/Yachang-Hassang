@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product 1 | Yachang Hassang Enterprise</title>
+  <title>Baby Nail Trimmer Electric Nail Clipper for Infants & Kids | Yachang Hassang Enterprise</title>
 
   <style>
     * {
@@ -13,10 +13,7 @@
       font-family: "Poppins", Arial, sans-serif;
     }
 
-    body {
-      background: #0e0e0e;
-      color: #fff;
-    }
+    body { background: #0e0e0e; color: #fff; }
 
     .navbar {
       width: 100%;
@@ -33,16 +30,9 @@
       height: 100px;
     }
 
-    .logo img {
-      height: 150px;
-      width: auto;
-      object-fit: contain;
-    }
+    .logo img { height: 150px; width: auto; object-fit: contain; }
 
-    .nav-buttons {
-      display: flex;
-      gap: 12px;
-    }
+    .nav-buttons { display: flex; gap: 12px; }
 
     .nav-buttons a {
       text-decoration: none;
@@ -54,10 +44,7 @@
       transition: 0.2s;
     }
 
-    .nav-buttons a:hover {
-      background: #0ff;
-      color: #000;
-    }
+    .nav-buttons a:hover { background: #0ff; color: #000; }
 
     @keyframes cartBounce {
       0% { transform: scale(1); }
@@ -66,9 +53,7 @@
       100% { transform: scale(1); }
     }
 
-    .cartBounce {
-      animation: cartBounce 0.45s ease forwards;
-    }
+    .cartBounce { animation: cartBounce 0.45s ease forwards; }
 
     .product-container {
       display: flex;
@@ -79,13 +64,7 @@
       flex-wrap: wrap;
     }
 
-    .left-images-wrapper {
-      display: flex;
-      gap: 15px;
-      align-items: flex-start;
-      flex: 1;
-      min-width: 320px;
-    }
+    .left-images-wrapper { display: flex; gap: 15px; align-items: flex-start; flex: 1; min-width: 320px; }
 
     .thumbs {
       display: flex;
@@ -135,35 +114,15 @@
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    .fade-slide {
-      opacity: 0;
-      transform: translateX(-20px);
-    }
+    .fade-slide { opacity: 0; transform: translateX(-20px); }
 
-    .right-info {
-      flex: 1;
-      min-width: 300px;
-      padding-top: 10px;
-    }
+    .right-info { flex: 1; min-width: 300px; padding-top: 10px; }
 
-    .right-info h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-      color: #0ff;
-    }
+    .right-info h1 { font-size: 32px; margin-bottom: 10px; color: #0ff; }
 
-    .price {
-      font-size: 24px;
-      color: #0ff;
-      margin-bottom: 18px;
-    }
+    .price { font-size: 24px; color: #0ff; margin-bottom: 18px; }
 
-    .desc {
-      font-size: 15px;
-      color: #ccc;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
+    .desc { font-size: 15px; color: #ccc; line-height: 1.6; margin-bottom: 25px; }
 
     .buy-btn {
       display: inline-block;
@@ -177,9 +136,7 @@
       transition: 0.25s;
     }
 
-    .buy-btn:hover {
-      background: #00e6e6;
-    }
+    .buy-btn:hover { background: #00e6e6; }
 
     .product-details {
       display: none;
@@ -206,81 +163,31 @@
     }
 
     @media (max-width: 480px) {
-      #viewMoreBtn,
-      #viewLessBtn {
-        display: none !important;
-      }
+      #viewMoreBtn, #viewLessBtn { display: none !important; }
+      #moreThumbs { display: none !important; }
 
-      #moreThumbs {
-        display: none !important;
-      }
+      .navbar { height: 65px; padding: 8px 12px; }
+      .logo img { height: 55px; }
 
-      .navbar {
-        height: 65px;
-        padding: 8px 12px;
-      }
+      .nav-buttons a { padding: 5px 8px; font-size: 11px; }
 
-      .logo img {
-        height: 55px;
-      }
+      .product-container { flex-direction: column; padding: 15px; gap: 20px; }
 
-      .nav-buttons a {
-        padding: 5px 8px;
-        font-size: 11px;
-      }
+      .left-images-wrapper { flex-direction: column; width: 100%; align-items: center; }
 
-      .product-container {
-        flex-direction: column;
-        padding: 15px;
-        gap: 20px;
-      }
+      .thumbs { flex-direction: row; width: 100%; overflow-x: auto; padding-bottom: 10px; gap: 10px; }
 
-      .left-images-wrapper {
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-      }
+      .thumbs img { width: 70px; height: 70px; flex-shrink: 0; }
 
-      .thumbs {
-        flex-direction: row;
-        width: 100%;
-        overflow-x: auto;
-        padding-bottom: 10px;
-        gap: 10px;
-      }
+      .main-img { height: 280px; width: 100%; }
 
-      .thumbs img {
-        width: 70px;
-        height: 70px;
-        flex-shrink: 0;
-      }
+      .right-info { text-align: center; }
+      .right-info h1 { font-size: 22px; }
+      .price { font-size: 20px; }
 
-      .main-img {
-        height: 280px;
-        width: 100%;
-      }
+      .desc { font-size: 14px; padding: 0 10px; }
 
-      .right-info {
-        text-align: center;
-      }
-
-      .right-info h1 {
-        font-size: 22px;
-      }
-
-      .price {
-        font-size: 20px;
-      }
-
-      .desc {
-        font-size: 14px;
-        padding: 0 10px;
-      }
-
-      .buy-btn {
-        width: 100%;
-        margin: 8px 0;
-      }
+      .buy-btn { width: 100%; margin: 8px 0; }
     }
   </style>
 </head>
@@ -303,65 +210,61 @@
     <div class="left-images-wrapper">
 
       <div class="thumbs">
-        <img src="images/a1.jpg" onclick="changeImg('images/a1.jpg')">
-        <img src="images/a2.jpg" onclick="changeImg('images/a2.jpg')">
-        <img src="images/a3.jpg" onclick="changeImg('images/a3.jpg')">
-        <img src="images/a4.jpg" onclick="changeImg('images/a4.jpg')">
-        <img src="images/a5.jpg" onclick="changeImg('images/a5.jpg')">
-
-        <div id="moreThumbs" style="display:none;">
-          <img src="images/a6.jpg" onclick="changeImg('images/a6.jpg')">
-          <img src="images/a7.jpg" onclick="changeImg('images/a7.jpg')">
-          <img src="images/a8.jpg" onclick="changeImg('images/a8.jpg')">
-          <img src="images/a9.jpg" onclick="changeImg('images/a9.jpg')">
-        </div>
+        <img src="images/e1.jpg" onclick="changeImg('images/e1.jpg')">
+        <img src="images/e2.jpg" onclick="changeImg('images/e2.jpg')">
+        <img src="images/e3.jpg" onclick="changeImg('images/e3.jpg')">
+        <img src="images/e4.jpg" onclick="changeImg('images/e4.jpg')">
+        <img src="images/e5.jpg" onclick="changeImg('images/e5.jpg')">
+        <img src="images/e6.jpg" onclick="changeImg('images/e6.jpg')">
 
         <button class="view-more-btn" id="viewMoreBtn" onclick="showMore()">View More</button>
         <button class="view-more-btn" id="viewLessBtn" style="display:none;" onclick="hideMore()">View Less</button>
       </div>
 
-      <img id="bigImg" src="images/a1.jpg" class="main-img">
+      <img id="bigImg" src="images/e1.jpg" class="main-img">
 
     </div>
 
     <div class="right-info">
-      <h1>Smart Electric Scalp & Body Massager – 96 Points, Detachable, Waterproof, Rechargeable (White)</h1>
-      <p class="price">₹1,199</p>
+      <h1>Baby Nail Trimmer Electric Nail Clipper for Infants & Kids | Safe & Silent Nail Cutter with Nail Debris Collector | Rechargeable Automatic Baby Nail Trimmer for Newborns & Toddlers | Portable Kids Grooming Tool</h1>
+      <p class="price">₹799</p>
 
       <p class="desc">
-        Rechargeable, waterproof scalp and body massager with 96 silicone kneading points and detachable heads for relaxing massage at home or on the go.
+        Gentle and safe electric nail trimmer for infants and kids. Silent, rechargeable, and equipped with a nail debris collector for hassle-free grooming. Perfect for newborns and toddlers.
+
+
       </p>
 
       <a class="buy-btn" href="#" onclick="addToCart()">Add to Cart</a>
 
-      <!-- ⭐ UPDATED BUY NOW BUTTON ⭐ -->
       <a class="buy-btn"
-         href="details1.html?name=Smart%20Electric%20Scalp%20%26%20Body%20Massager%20%E2%80%93%2096%20Points%2C%20Detachable%2C%20Waterproof%2C%20Rechargeable%20(White)&img=images/a1.jpg&price=1199"
+         href="details5.html?name=Baby%20Nail%20Trimmer%20Electric%20Nail%20Clipper%20for%20Infants%20%26%20Kids&img=images/e1.jpg&price=799"
          style="margin-left: 10px;">
          Buy Now
       </a>
 
       <button class="details-btn" id="detailsBtn" onclick="toggleDetails()">Show Details</button>
       <div class="product-details" id="productDetails">
-        <ul>
-          <li>Use for: Whole Body</li>
-          <li>Power Source: Battery Powered</li>
-          <li>Material: Silicone</li>
-          <li>Item Weight: 200 Grams</li>
-          <li>Colour: White</li>
-          <li>Special Feature: 360° Rotating Heads, One-Button Control, Portable, Rechargeable, Waterproof, Cordless, Lightweight</li>
-          <li>Massager form: Electric Scalp Massager</li>
-          <li>Specific Uses: Circulation, Head, Neck, Hair Growth, Stress Relief, Scalp Massage, Full Body Massage, Pain Relief, Blood Circulation</li>
-          <li>Product Dimensions: 16.5L x 5W x 20.8H cm</li>
-        </ul>
-      </div>
+    <ul>
+      <li>Item Name: BabyCare Nail Trim Pro</li>
+      <li>Item Dimensions (LxWxH): 8.5 x 6 x 4 cm</li>
+      <li>Item Height: 4 cm</li>
+      <li>Item Weight: 100 g</li>
+      <li>Country of Origin: China</li>
+      <li>Special Feature: Safe, Silent, Rechargeable, Nail Debris Collector</li>
+      <li>Suitable For: Newborns & Toddlers</li>
+      <li>Number of Items: 1</li>
+      <li>What’s in the Box?: 1 Baby Nail Trimmer</li>
+      <li>Net Quantity: 1 count</li>
+    </ul>
+</div>
 
     </div>
 
   </div>
 
   <script>
-    let images = ["images/a1.jpg","images/a2.jpg","images/a3.jpg","images/a4.jpg","images/a5.jpg"];
+    let images = ["images/e1.jpg","images/e2.jpg","images/e3.jpg","images/e4.jpg","images/e5.jpg","images/e6.jpg"];
     let currentIndex = 0;
     const bigImg = document.getElementById("bigImg");
 
@@ -390,7 +293,6 @@
       document.getElementById("viewMoreBtn").style.display = "block";
     }
 
-    /* MOBILE SWIPE */
     let startX = 0;
     bigImg.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; });
     bigImg.addEventListener("touchend", (e) => {
@@ -401,19 +303,13 @@
 
     function addToCart() {
       const product = {
-        name: "Smart Electric Scalp & Body Massager – 96 Points, Detachable, Waterproof, Rechargeable (White)",
-        price: 1199,
-        image: "images/a1.jpg",
-        useFor: "Whole Body",
-        powerSource: "Battery Powered",
-        material: "Silicone",
-        itemWeight: "200 Grams",
-        brand: "MILDCARES",
-        colour: "White",
-        specialFeature: "360° Rotating Heads, One-Button Control, Portable, Rechargeable, Waterproof, Cordless, Lightweight",
-        massagerForm: "Electric Scalp Massager",
-        specificUses: "Circulation, Head, Neck, Hair Growth, Stress Relief, Scalp Massage, Full Body Massage, Pain Relief, Blood Circulation",
-        dimensions: "16.5L x 5W x 20.8H cm",
+        name: "Baby Nail Trimmer Electric Nail Clipper for Infants & Kids | Safe & Silent Nail Cutter with Nail Debris Collector | Rechargeable Automatic Baby Nail Trimmer for Newborns & Toddlers | Portable Kids Grooming Tool",
+        price: 615,
+        image: "images/e1.jpg",
+        material: "Polyester",
+        useFor: "Stomach, Back, Belly",
+        colour: "Pink",
+        specialFeature: "3-Speed Temp, 4-Speed Massage",
         qty: 1
       };
 

@@ -227,6 +227,7 @@ if (name && img && price) {
 }
 
 // ===== Form submission =====
+// ===== Form submission =====
 document.getElementById('orderForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -246,13 +247,8 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
     } 
     
     else if (paymentMethod === "Prepaid (Online Payment)") {
-
-      // ✅ NEW CONDITION
-      if (source === "product2") {
-        window.location.href = "https://rzp.io/rzp/ARkLuzJN";
-      } else {
-        window.location.href = "https://rzp.io/rzp/ARkLuzJN"; 
-      }
+      alert('✅ Order submitted! Redirecting to payment...');
+      window.location.href = "https://rzp.io/rzp/Zufmdgz5";
     }
 
     this.reset();
@@ -262,6 +258,7 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
     alert('❌ Something went wrong. Please try again.');
   });
 });
+
 </script>
 
 </body>
