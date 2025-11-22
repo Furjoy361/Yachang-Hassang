@@ -147,6 +147,33 @@
       color: #ccc;
     }
 
+    /* SEARCH BAR */
+    .search-box {
+      width: 100%;
+      padding: 30px 25px;
+      display: flex;
+      justify-content: center;
+      background: #0e0e0e;
+    }
+
+    .search-box input {
+      width: 100%;
+      max-width: 480px;
+      padding: 12px 18px;
+      background: #151515;
+      border: 1px solid #222;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: #0ff;
+      box-shadow: 0 0 8px rgba(0,255,255,0.4);
+    }
+
     .product-section {
       padding: 25px;
     }
@@ -174,17 +201,15 @@
       box-shadow: 0 0 12px rgba(0,255,255,0.4);
     }
 
-    /* UPDATED — full image, no stretch, no borders */
-   .product-card img {
-  width: 100%;
-  height: auto;     /* auto height so image is NEVER stretched */
-  object-fit: contain;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  border: 1px solid #333;
-  background: none;
-}
-
+    .product-card img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      border: 1px solid #333;
+      background: none;
+    }
 
     .product-card h3 {
       font-size: 17px;
@@ -195,22 +220,6 @@
       color: #0ff;
       margin-bottom: 12px;
       font-size: 15px;
-    }
-
-    .buy-btn {
-      display: inline-block;
-      padding: 8px 14px;
-      background: #0ff;
-      color: #000;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      transition: 0.25s;
-    }
-
-    .buy-btn:hover {
-      background: #00e6e6;
     }
 
     @media (max-width: 768px) {
@@ -257,19 +266,19 @@
     }
 
     @media (max-width: 480px) {
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
 
-  .product-card img {
-    width: 100%;
-    height: auto;           /* fixes stretching */
-    max-height: 420px;      /* shows the full picture */
-    object-fit: contain;    /* ensures full image without cut */
-    background: #000;       /* removes any blank/white space */
-    border-radius: 12px;
-  }
-}
+      .product-card img {
+        width: 100%;
+        height: auto;
+        max-height: 420px;
+        object-fit: contain;
+        background: #000;
+        border-radius: 12px;
+      }
+    }
 
   </style>
 </head>
@@ -281,7 +290,6 @@
     </div>
 
     <div class="nav-buttons">
-      
       <a href="cart.html">Cart</a>
     </div>
   </div>
@@ -300,12 +308,17 @@
   </div>
 
   <section class="hero">
-    <h1>Your Next-Gen Shopping Hub</h1>
-    <p>Dark • Modern • Clean • Fast</p>
+    <h1>Our Products</h1>
+    <p>Yachang Hassang Enterprise</p>
   </section>
 
+  <!-- 🔍 SEARCH BAR -->
+  <div class="search-box">
+    <input id="searchInput" type="text" placeholder="Search products..." onkeyup="searchProducts()">
+  </div>
+
   <section class="product-section" id="products">
-    <div class="product-grid">
+    <div class="product-grid" id="productGrid">
 
       <a href="product1.html" class="product-card">
         <img src="images/a1.jpg"><h3>Smart Electric Scalp & Body Massager – 96 Points, Detachable, Waterproof, Rechargeable (White)</h3><p>₹1199</p>
@@ -328,8 +341,7 @@
       </a>
 
       <a href="product6.html" class="product-card">
-        <img src="images/f1.jpg"><h3>
-Rechargeable Waterproof 3D Scalp Massager-Handheld Portable Head Massager Machine For Stress Relief And Deep Muscle Relaxation (White)</h3><p>₹2299</p>
+        <img src="images/f1.jpg"><h3>Rechargeable Waterproof 3D Scalp Massager-Handheld Portable Head Massager Machine For Stress Relief And Deep Muscle Relaxation (White)</h3><p>₹2299</p>
       </a>
 
       <a href="product7.html" class="product-card">
@@ -337,16 +349,15 @@ Rechargeable Waterproof 3D Scalp Massager-Handheld Portable Head Massager Machin
       </a>
 
       <a href="product8.html" class="product-card">
-        <img src="images/h6.jpg"><h3>
-HD Visor for Car, for Day and Night, Polarized Sun Visor, Anti-Glare, UV Blocking Sun Protection Vehicle Windshield Sunshade for Clearer Vision and Safe Driving (car Sun Visor)</h3><p>₹499</p>
+        <img src="images/h6.jpg"><h3>HD Visor for Car, for Day and Night, Polarized Sun Visor, Anti-Glare, UV Blocking Sun Protection Vehicle Windshield Sunshade</h3><p>₹499</p>
       </a>
 
       <a href="product9.html" class="product-card">
-        <img src="images/i1.jpg"><h3>Stainless Steel Self Defence Stick Foldable Pointer Compact Magical Stick, Extendable Wand with Comfortable Grip & Hiking Stick, Extendable Wand with Non-Slip Grip (Pack of 1)</h3><p>₹489</p>
+        <img src="images/i1.jpg"><h3>Stainless Steel Self Defence Stick Foldable Pointer Compact Magical Stick, Extendable Wand with Comfortable Grip & Hiking Stick</h3><p>₹489</p>
       </a>
 
       <a href="product10.html" class="product-card">
-        <img src="images/j2.jpg"><h3>Jet Flame Butane Gas Lighter Refillable Windproof Torch Lighter with Safety Lock and Adjustable Flame | Cool Lighters for Candles, Campfires, BBQ, Baking, Fireplace, Camping | Metal Body</h3><p>₹799</p>
+        <img src="images/j2.jpg"><h3>Jet Flame Butane Gas Lighter Refillable Windproof Torch Lighter with Safety Lock and Adjustable Flame</h3><p>₹799</p>
       </a>
 
       <a href="product11.html" class="product-card">
@@ -358,7 +369,7 @@ HD Visor for Car, for Day and Night, Polarized Sun Visor, Anti-Glare, UV Blockin
       </a>
 
       <a href="product16.html" class="product-card">
-        <img src="images/p1.jpg"><h3>Anti Choking Device, Choking Rescue Device for Kids and Adults, Portable Airway Suction Device, Airway Suction Device for Home & Travel First Aid Kit</h3><p>₹899</p>
+        <img src="images/p1.jpg"><h3>Anti Choking Device, Choking Rescue Device for Kids and Adults, Portable Airway Suction Device</h3><p>₹899</p>
       </a>
 
       <a href="product17.html" class="product-card">
@@ -368,11 +379,18 @@ HD Visor for Car, for Day and Night, Polarized Sun Visor, Anti-Glare, UV Blockin
     </div>
   </section>
 
+<!-- ⭐ LIVE SEARCH SCRIPT -->
+<script>
+function searchProducts() {
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let cards = document.querySelectorAll(".product-card");
+
+  cards.forEach(card => {
+    let text = card.innerText.toLowerCase();
+    card.style.display = text.includes(input) ? "" : "none";
+  });
+}
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
